@@ -1,0 +1,35 @@
+﻿@model UserDetailVM
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label>@Model.UserName</label>
+            </div>
+            <div class="col">
+                <label>@Model.Email</label>
+            </div>
+            <div class="col">
+                <label>@Model.FirstName</label>
+            </div>
+            <div class="col">
+                <label>@Model.LastName</label>
+            </div>
+            <div class="col">
+                <label>@Model.Address</label>
+            </div>
+            <div class="col">
+                <label>@Model.Birthdate</label>
+            </div>
+            <div class="col">
+                <label>@Model.City</label>
+            </div>
+            <div class="col">
+                <label>@Model.Description</label>
+            </div>
+        </div>
+    </div>

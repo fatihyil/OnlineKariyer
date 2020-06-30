@@ -1,0 +1,312 @@
+﻿@model UserInfoVM
+
+
+@{
+    ViewData["Title"] = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .Info {
+        border: 1px solid black;
+        padding: 20px;
+    }
+</style>
+
+<div class="container text-light">
+    <h2 class="text-center text-capitalize text-light">Kullanıcı Bilgileri Ekle</h2>
+    <div class="Info mt-4">
+        <input type="hidden" id="userId" value="@Model.UserId" />
+        <input type="hidden" id="username" value="@Model.UserName" />
+        <div class="row">
+            <div class="col">
+                <label>Ad</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="col">
+                <label>Soyad</label>
+                <input type="text" class="form-control" id="surname">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Adres</label>
+                <input type="text" class="form-control" id="address">
+            </div>
+            <div class="col">
+                <label>Şehir</label>
+                <input type="text" class="form-control" id="city">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Email</label>
+                <input type="text" class="form-control" id="email">
+            </div>
+            <div class="col">
+                <label>Telefon</label>
+                <input type="text" class="form-control" id="phone">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Doğum Tarihi</label>
+                <input type="text" class="form-control" id="birthdate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Özet Bilginiz</label>
+                <input type="text" class="form-control" id="description">
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="mt-4">
+                <button class="btn btn-success" id="UserInfosubmit">Kaydet</button>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center text-capitalize  text-light">İş Deneyimi</h2>
+    <div class="Info mt-4">
+
+        <div class="row">
+            <div class="col">
+                <label>Şirket Adı:</label>
+                <input type="text" class="form-control" id="companyname" />
+            </div>
+            <div class="col">
+                <label>Çalışma Şekli:</label>
+                <input type="text" class="form-control" id="worktype" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Başlangıç Tarihi:</label>
+                <input type="date" class="form-control" id="startdate" />
+            </div>
+            <div class="col">
+                <label>Bitiş Tarihi:</label>
+                <input type="date" class="form-control" id="enddate" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Pozisyon:</label>
+                <input type="text" class="form-control" id="jobposition" />
+            </div>
+            <div class="col">
+                <label>İş Tanımı:</label>
+                <input type="text" class="form-control" id="jobdescription" />
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="mt-4">
+                <button class="btn btn-success" id="UserExpsubmit">Kaydet</button>
+            </div>
+        </div>
+
+    </div>
+    <h2 class="text-center text-capitalize  text-light">Dil Bilgisi</h2>
+    <div class="Info mt-4">
+
+        <div class="row">
+            <div class="col">
+                <label>Dil:</label>
+                <input type="text" class="form-control" id="language" />
+            </div>
+            <div class="col">
+                <label>Dil Seviyesi :</label>
+                @*<input type="text" class="form-control" id="languagelevel" />*@
+                <select id="languagelevel" class="form-control">
+                    <option value="İyi">İyi</option>
+                    <option value="Orta">Orta</option>
+                    <option value="Başlangıç">Başlangıç</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="mt-4">
+                <button class="btn btn-success" id="UserLansubmit">Kaydet</button>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center text-capitalize  text-light">Eğitim Bilgisi</h2>
+    <div class="Info mt-4">
+
+        <div class="row">
+            <div class="col">
+                <label>Universite</label>
+                <input type="text" class="form-control" id="university" />
+            </div>
+            <div class="col">
+                <label>Fakülte :</label>
+                <input type="text" class="form-control" id="faculty" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Bölüm</label>
+                <input type="text" class="form-control" id="study" />
+            </div>
+            <div class="col">
+                <label>Derece :</label>
+                <input type="text" class="form-control" id="studyType" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Başlangıç Tarihi : </label>
+                <input type="date" class="form-control" id="edustartdate" />
+            </div>
+            <div class="col">
+                <label>Bitiş Tarihi :</label>
+                <input type="date" class="form-control" id="eduenddate" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Öğretim Tipi:</label>
+                <input type="text" class="form-control" id="educationtype" />
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="mt-4">
+                <button class="btn btn-success" id="UserEdusubmit">Kaydet</button>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center text-capitalize  text-light">Sertifika Bilgisi</h2>
+    <div class="Info mt-4">
+
+        <div class="row">
+            <div class="col">
+                <label>Sertifika Adı :</label>
+                <input type="text" class="form-control" id="certificationname" />
+            </div>
+            <div class="col">
+                <label>Alınan Yer :</label>
+                <input type="text" class="form-control" id="company" />
+            </div>
+            <div class="col">
+                <label>Alınan Tarih:</label>
+                <input type="date" class="form-control" id="cerdate" />
+            </div>
+        </div>     
+       
+        <div class="d-flex justify-content-end">
+            <div class="mt-4">
+                <button class="btn btn-success" id="UserCersubmit">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="ModalSuccess">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bilgilendirme</h5>
+            </div>
+            <div class="modal-body">
+                <p class="alert alert-info">Bilgileriniz Eklendi.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#UserInfosubmit").click(function () {            
+            var UserInfo = {
+                UserId: $("#userId").val(),
+                FirstName: $("#name").val(),
+                LastName: $("#surname").val(),
+                Address: $("#address").val(),
+                City: $("#city").val(),
+                Email: $("#email").val(),
+                Phone: $("#phone").val(),
+                BirthDate: $("#birthdate").val(),
+                Description: $("#description").val(),
+                UserName: $("#username").val()
+            };
+            $.ajax({
+                type: "POST",
+                url: "/User/Info/UserId",
+                data: UserInfo,
+                success: function () {
+                    $('#ModalSuccess').modal('show')
+                }
+            })
+        })
+        $("#UserExpsubmit").click(function () {
+            var UserExp = {
+                CompanyName: $("#companyname").val(),
+                StartDate: $("#startdate").val(),
+                EndDate: $("#enddate").val(),
+                JobPosition: $("#jobposition").val(),
+                JobDescription: $("#jobdescription").val(),
+                WorkType: $("#worktype").val(),
+                UserId: $("#userId").val()
+            };
+            $.ajax({
+                type: "POST",
+                data: UserExp,
+                url: "/User/Experience",
+                success: function () {
+                    $('#ModalSuccess').modal('show')
+                }
+            })
+        })
+        $("#UserLansubmit").click(function () {
+            var UserLan = {
+                Language: $("#language").val(),
+                LanguageLevel: $("#languagelevel").val(),
+                UserId: $("#userId").val()
+            }
+            $.ajax({
+                url: "/User/Language",
+                data: UserLan,
+                type: "POST",
+                success: function () {
+                    $('#ModalSuccess').modal('show')
+                }
+            })
+        })
+        $("#UserEdusubmit").click(function () {
+            var UserEdu = {
+                University: $("#university").val(),
+                Faculty: $("#faculty").val(),
+                Study: $("#study").val(),
+                StudyType: $("#studyType").val(),
+                StartDate: $("#edustartdate").val(),
+                EndDate: $("#eduenddate").val(),
+                EducationType: $("#educationtype").val(),
+                UserId: $("#userId").val()
+            }
+            $.ajax({
+                url: "/User/Education",
+                data: UserEdu,
+                type: "POST",
+                success: function () {
+                    $('#ModalSuccess').modal('show')
+                }
+            })
+        })
+        $("#UserCersubmit").click(function () {
+            var UserCer = {
+                CertificationName: $("#certificationname").val(),
+                Company: $("#company").val(),
+                Date: $("#cerdate").val(),
+                UserId: $("#userId").val()
+            }
+            $.ajax({
+                type: "POST",
+                data: UserCer,
+                url: "/User/Certification",
+                success: function () {
+                    $('#ModalSuccess').modal('show')
+                }
+            })
+
+        })
+    })
+    
+</script>
+

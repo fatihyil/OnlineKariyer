@@ -1,0 +1,43 @@
+﻿@model JobAdvertDetailVM
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container pt-5">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success" >
+                <p>@TempData["SuccessMessage"]</p>
+            </div>
+        }
+        
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title">@Model.JobPosition</h5>
+                <hr />
+                <span>İş Tanımı :</span>
+                <p class="card-text">@Model.JobDescription</p>
+                <span>Şirket :</span>
+                <p class="card-text">@Model.CompanyName</p>
+                <span>Çalışan Sayısı :</span>
+                <p class="card-text">@Model.WorkerCount</p>
+                <span>Başvuran sayısı :</span>
+                <p class="card-text">@Model.ApplyCount</p>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <input type="hidden" id="jobadvertid" name="name" value="@Model.JobAdvertId" />
+                @if ((bool)TempData["ApplyJob"])
+                {
+                    <a class="btn btn-danger" href="/User/DeleteJob/@Model.JobAdvertId">Başvuruyu Geri Çek</a>
+                }
+                else
+                {
+                    <a href="/User/ApplyJob/@Model.JobAdvertId" id="basvur" class="btn btn-primary">Başvur</a>
+                }
+            </div>
+        </div>
+    </div>
+
+
+

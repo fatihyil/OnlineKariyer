@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="User" asp-action="Info" asp-route-id="@User.Identity.Name">Kullanıcı Bilgileri</a>
+        </li>*@
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Merhaba @User.Identity.Name</a>
+            <div class="dropdown-menu bg-dark">
+                <a class="nav-link text-light" asp-controller="User" asp-action="Detail" asp-route-id="@User.Identity.Name">Kullanıcı Bilgileri</a>
+                <a class="nav-link text-light" asp-controller="User" asp-action="Info" asp-route-id="@User.Identity.Name">Kullanıcı Bilgileri Düzenle</a>
+                              
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" asp-controller="JobAdvert" asp-action="Index" >İş İlanları</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-controller="Account" asp-action="LogOut" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link btn-danger btn-sm">Çıkış</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-light btn btn-sm btn-warning" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light btn btn-sm btn-success ml-1" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+        </li>
+    }
+</ul>

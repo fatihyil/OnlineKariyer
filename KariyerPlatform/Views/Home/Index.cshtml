@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <div class="text text-light container pt-5 img-banner">
+        <p>Kariyerinize daha güzel işlerde devam etmek ister misiniz ? </p>
+        <p>Tam yerine geldiniz. Hemen kaydolun ve giriş yapın. </p>
+        <p>Sizin için iş ilanlarını bulduk  ve size sunuyoruz ben bu işi yaparım diyorsan  </p>
+        <p>DURMA</p>
+        <p>Hayallerinde ki iş bir tık uzağında .</p>
+        <p>Haydi Başvur.</p>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <p>@User.Identity.Name Hoşgeldin </p>
+        }
+        else
+        {
+            <div>
+                <button class="btn btn-warning">Kayıt Ol</button>
+                <button class="btn btn-success">Giriş Yap</button>
+            </div>
+        }
+
+    </div>
